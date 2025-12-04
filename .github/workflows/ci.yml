@@ -35,5 +35,11 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx gh-pages -d dist -t ${{ secrets.GITHUB_TOKEN }} -u "github-actions <shellipov@mail.ru>"
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "shellipov@mail.ru"
+          
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/shellipov/vueTest.git
+          
+          npx gh-pages -d dist
 
