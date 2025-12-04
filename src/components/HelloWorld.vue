@@ -5,6 +5,14 @@ import { fromEvent, Subscription } from 'rxjs';
 const count = ref(0);
 const secondCount = ref(0);
 const btn = ref<HTMLButtonElement | null>(null);
+const color = ref('#FF0000') // начальный цвет
+
+function getRandomRgbColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
 
 let subscription: Subscription | null = null;
 
@@ -16,6 +24,7 @@ onMounted(() => {
   subscription = click$.subscribe(() => {
     console.log('Кнопка нажата через RxJS!');
     secondCount.value += 2;
+    color.value = getRandomRgbColor()
   });
 });
 
@@ -31,7 +40,7 @@ onUnmounted(() => {
     </button>
   </div>
   <div class="card">
-    <button ref="btn">
+    <button ref="btn" :style="{ backgroundColor: color }">
       rxJs - {{ secondCount }}
     </button>
   </div>
