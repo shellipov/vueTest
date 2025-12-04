@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: 'https://github.com/shellipov/vueTest'
+    publicPath: 'https://shellipov.github.io/vueTest'
 }
