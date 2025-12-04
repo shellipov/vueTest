@@ -15,7 +15,7 @@ onMounted(() => {
 
   subscription = click$.subscribe(() => {
     console.log('Кнопка нажата через RxJS!');
-    secondCount.value += 1;
+    secondCount.value += 2;
   });
 });
 
